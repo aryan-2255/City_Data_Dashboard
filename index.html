@@ -6,7 +6,8 @@
     <title>Smart City Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Maps API with Places library for autocomplete -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_-Fnc-DHYiAf5nWP90frrHP32QA7L3so&libraries=places&callback=initGoogleMaps" async defer></script>
+    <!-- API key is loaded dynamically from script.js -->
+    <script id="google-maps-script" async defer></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -59,7 +60,7 @@
                 <!-- Weather Card -->
                 <div class="card-grid">
                     <div class="card weather-card">
-                        <h3>🌤️ Current Weather</h3>
+                        <h3> Current Weather</h3>
                         <div class="weather-info">
                             <div class="temp-display">
                                 <span id="temperature" class="big-number">--</span>
@@ -82,6 +83,18 @@
                         </div>
                         <div class="info-text">
                             <small>Good: 0-50 | Moderate: 51-100 | Unhealthy: 101+</small>
+                        </div>
+                    </div>
+
+                    <!-- Energy Consumption Card -->
+                    <div class="card">
+                        <h3>Carbon Footprint</h3>
+                        <div class="aqi-display">
+                            <div id="carbonFootprint" class="big-number">--</div>
+                            <p id="carbonStatus" class="status-text">Loading...</p>
+                        </div>
+                        <div class="info-text">
+                            <small id="energyInfo">Energy consumption impact estimate</small>
                         </div>
                     </div>
                 </div>
@@ -262,7 +275,9 @@
         <p>Smart City Dashboard | Built with HTML, CSS & JavaScript | Data from Open APIs</p>
     </footer>
 
-    <!-- Load script after page loads -->
+    <!-- Load API configuration first (contains sensitive keys) -->
+    <script src="config.js"></script>
+    <!-- Load main script after config -->
     <script src="script.js"></script>
     <script>
         // Initialize dashboard when DOM is ready
