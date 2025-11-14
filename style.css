@@ -195,6 +195,50 @@ body {
     font-size: 1.3rem;
 }
 
+/* ===== CITY DESCRIPTION CARD ===== */
+.city-description-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+}
+
+.city-description-card h3 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.city-description {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.city-description p {
+    margin-bottom: 0.8rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.city-description .loading-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+}
+
+.ai-generating {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -339,6 +383,27 @@ body {
 }
 
 /* ===== CHARTS SECTION ===== */
+.card canvas {
+    max-height: 400px;
+    margin: 1rem 0;
+    transition: transform 0.3s ease;
+}
+
+.card canvas:hover {
+    transform: scale(1.02);
+}
+
+.chart-note {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    font-style: italic;
+    padding: 0.5rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 6px;
+}
+
 .chart-placeholder {
     background: white;
     border: 2px dashed #e0e0e0;

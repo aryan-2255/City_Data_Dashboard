@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart City Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <!-- Google Maps API with Places library for autocomplete -->
     <!-- API key is loaded dynamically from script.js -->
     <script id="google-maps-script" async defer></script>
@@ -57,6 +59,14 @@
                     <p class="subtitle">Real-time data for <span id="selectedCity">--</span></p>
                 </div>
 
+                <!-- AI City Description -->
+                <div class="card city-description-card">
+                    <h3>🤖 AI City Insights</h3>
+                    <div id="cityDescription" class="city-description">
+                        <p class="loading-text">Search for a city to get AI-powered insights about living, working, and studying there!</p>
+                    </div>
+                </div>
+
                 <!-- Weather Card -->
                 <div class="card-grid">
                     <div class="card weather-card">
@@ -83,18 +93,6 @@
                         </div>
                         <div class="info-text">
                             <small>Good: 0-50 | Moderate: 51-100 | Unhealthy: 101+</small>
-                        </div>
-                    </div>
-
-                    <!-- Energy Consumption Card -->
-                    <div class="card">
-                        <h3>Carbon Footprint</h3>
-                        <div class="aqi-display">
-                            <div id="carbonFootprint" class="big-number">--</div>
-                            <p id="carbonStatus" class="status-text">Loading...</p>
-                        </div>
-                        <div class="info-text">
-                            <small id="energyInfo">Energy consumption impact estimate</small>
                         </div>
                     </div>
                 </div>
@@ -134,26 +132,23 @@
                     </div>
                 </div>
 
-                <!-- Sun & Moon Info -->
+                <!-- Sun Information -->
                 <div class="card">
-                    <h3>Sun & Moon Information</h3>
+                    <h3>Sun Information</h3>
                     <div class="sun-moon-grid">
                         <div class="sun-moon-item">
-                            <span class="sm-icon"></span>
+                            <span class="sm-icon">🌅</span>
                             <div>
                                 <p class="sm-label">Sunrise</p>
                                 <p id="sunrise" class="sm-value">--:--</p>
                             </div>
                         </div>
                         <div class="sun-moon-item">
-                            <span class="sm-icon"></span>
+                            <span class="sm-icon">🌇</span>
                             <div>
                                 <p class="sm-label">Sunset</p>
                                 <p id="sunset" class="sm-value">--:--</p>
                             </div>
-                        </div>
-                        <div class="sun-moon-item">
-                            <span class="sm-icon"></span>
                         </div>
                     </div>
                 </div>
@@ -167,27 +162,21 @@
                 </div>
 
                 <div class="card">
-                    <h3> Temperature Trends</h3>
-                    <div id="tempChart" class="chart-placeholder">
-                        <p>Chart will display here</p>
-                        <small>Connect API to see real data visualization</small>
-                    </div>
+                    <h3>🌡️ Temperature Overview</h3>
+                    <canvas id="tempChart"></canvas>
+                    <p class="chart-note">Real-time temperature data from API</p>
                 </div>
 
                 <div class="card">
-                    <h3> Air Quality Breakdown</h3>
-                    <div id="aqiChart" class="chart-placeholder">
-                        <p>Pollutant breakdown chart</p>
-                        <small>PM2.5, PM10, NO2, SO2, CO, O3</small>
-                    </div>
+                    <h3>🌬️ Air Quality Breakdown</h3>
+                    <canvas id="aqiChart"></canvas>
+                    <p class="chart-note">Pollutant levels from Google Air Quality API</p>
                 </div>
 
                 <div class="card">
-                    <h3> Weekly Weather Overview</h3>
-                    <div id="weeklyChart" class="chart-placeholder">
-                        <p>7-day forecast visualization</p>
-                        <small>Temperature and humidity trends</small>
-                    </div>
+                    <h3>📊 Weather Metrics</h3>
+                    <canvas id="weatherChart"></canvas>
+                    <p class="chart-note">Current weather conditions from API</p>
                 </div>
             </section>
 

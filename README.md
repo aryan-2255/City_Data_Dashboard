@@ -47,50 +47,95 @@ This Smart City Dashboard fetches live data from public APIs and presents it in 
 - **JavaScript (ES6+)** - Interactive functionality and API integration
 
 ### APIs
-- **OpenWeatherMap API** - Weather and air quality data
+- **Google Maps Platform** (Primary)
+  - Maps JavaScript API - Interactive maps
+  - Geocoding API - City name to coordinates
+  - Places API - Autocomplete search
+  - Air Quality API - Real-time AQI data
+- **OpenWeatherMap API** (Fallback)
   - Current Weather API
   - Air Pollution API
-- **TomTom API** - Maps and traffic data (ready for integration)
+- **Google Gemini API** - AI-powered city descriptions
 
 ## 📁 File Structure
 
 ```
-cursor pranjal/
+City_Data_Dashboard/
 │
 ├── index.html          # Main HTML structure
 ├── style.css           # All styling and responsive design
 ├── script.js           # JavaScript logic and API integration
+├── config.example.js   # API configuration template (safe to commit)
+├── config.js           # Your API keys (DO NOT COMMIT - in .gitignore)
+├── build-config.js      # Netlify build script (generates config.js from env vars)
+├── netlify.toml        # Netlify deployment configuration
+├── .gitignore          # Git ignore rules (protects config.js)
+├── DEPLOYMENT.md       # Detailed deployment guide
 └── README.md          # Project documentation
 ```
 
 ## 🚀 How to Run
 
-1. **Open the project:**
-   - Simply open `index.html` in any modern web browser
-   - No server setup required!
+### Local Development:
 
-2. **Search for a city:**
+1. **Setup API keys:**
+   ```bash
+   cp config.example.js config.js
+   # Edit config.js and add your API keys
+   ```
+
+2. **Open the project:**
+   - Simply open `index.html` in any modern web browser
+   - Or use a local server: `python -m http.server 8000`
+
+3. **Search for a city:**
    - Type any city name in the search bar (e.g., "London", "New York", "Tokyo")
    - Click "Search" or press Enter
    - Watch the dashboard populate with real-time data
 
-3. **Navigate sections:**
+4. **Navigate sections:**
    - Click on sidebar menu items to switch between:
      - Dashboard (main overview)
      - Charts (data visualization)
      - Map View (location details)
      - Raw Data (API responses)
 
-## 🔑 API Keys (Already Configured)
+### Deploy to Netlify:
 
-The following API keys are already integrated:
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
 
-- **OpenWeatherMap**: `63eeefb285cd94e898abfd05116834aa`
-- **TomTom**: `qPhFw0mqM1xuFJ898AsDGfkYmPbmHUPp`
+**Quick steps:**
+1. Push to GitHub (config.js is already in .gitignore)
+2. Connect repo to Netlify
+3. Add environment variables in Netlify dashboard:
+   - `GOOGLE_MAPS_KEY`
+   - `OPENWEATHER_KEY`
+   - `GEMINI_KEY`
+4. Deploy! Netlify will auto-generate config.js during build
+
+## 🔑 API Setup
+
+### For Local Development:
+
+1. **Copy the example config:**
+   ```bash
+   cp config.example.js config.js
+   ```
+
+2. **Add your API keys to `config.js`:**
+   - Google Maps API key (for maps, geocoding, and air quality)
+   - OpenWeatherMap API key (fallback for weather)
+   - Gemini API key (for AI city descriptions)
+
+3. **Get API Keys:**
+   - [Google Cloud Console](https://console.cloud.google.com/) - Enable Maps JavaScript API, Geocoding API, and Air Quality API
+   - [OpenWeatherMap](https://openweathermap.org/api) - Free tier available
+   - [Google AI Studio](https://makersuite.google.com/app/apikey) - For Gemini API
 
 ### API Rate Limits:
+- Google Maps: Varies by API (check your quota)
 - OpenWeatherMap Free: 60 calls/minute, 1,000,000 calls/month
-- TomTom Free: 2,500 requests/day
+- Gemini API: Check your quota in Google AI Studio
 
 ## 💡 How It Works
 
@@ -292,8 +337,10 @@ This project is created for educational purposes as part of a Smart City Data Da
 
 ## 🙏 Credits
 
-- **Weather Data**: OpenWeatherMap
-- **Map Services**: TomTom
+- **Weather Data**: OpenWeatherMap (fallback)
+- **Maps & Air Quality**: Google Maps Platform
+- **AI Descriptions**: Google Gemini API
+- **Charts**: Chart.js
 - **Design Inspiration**: Modern dashboard UI/UX patterns
 
 ---
