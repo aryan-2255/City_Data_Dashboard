@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart City Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Maps API with Places library for autocomplete -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_-Fnc-DHYiAf5nWP90frrHP32QA7L3so&libraries=places&callback=initGoogleMaps" async defer></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -51,7 +53,7 @@
             <section id="dashboard" class="content-section active">
                 <div class="section-header">
                     <h2>City Overview</h2>
-                    <p class="subtitle">Real-time data for <span id="selectedCity">Your City</span></p>
+                    <p class="subtitle">Real-time data for <span id="selectedCity">--</span></p>
                 </div>
 
                 <!-- Weather Card -->
@@ -139,10 +141,6 @@
                         </div>
                         <div class="sun-moon-item">
                             <span class="sm-icon"></span>
-                            <div>
-                                <p class="sm-label">Moon Phase</p>
-                                <p id="moonPhase" class="sm-value">--</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -188,13 +186,7 @@
                 </div>
 
                 <div class="card map-card">
-                    <div id="mapContainer" class="map-placeholder">
-                        <div class="map-overlay">
-                            <h3>Interactive Map</h3>
-                            <p>Map view will appear here</p>
-                            <small>Shows city location, weather stations, air quality monitors</small>
-                        </div>
-                    </div>
+                    <div id="mapContainer" class="map-placeholder"></div>
                 </div>
 
                 <div class="card">
@@ -203,7 +195,7 @@
                         <p><strong>City:</strong> <span id="mapCity">--</span></p>
                         <p><strong>Coordinates:</strong> <span id="coordinates">--, --</span></p>
                         <p><strong>Timezone:</strong> <span id="timezone">--</span></p>
-                        <p><strong>Population:</strong> <span id="population">--</span></p>
+                        <p><strong>Location:</strong> <span id="population">--</span></p>
                     </div>
                 </div>
             </section>
@@ -270,7 +262,16 @@
         <p>Smart City Dashboard | Built with HTML, CSS & JavaScript | Data from Open APIs</p>
     </footer>
 
+    <!-- Load script after page loads -->
     <script src="script.js"></script>
+    <script>
+        // Initialize dashboard when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
 </body>
 </html>
 
