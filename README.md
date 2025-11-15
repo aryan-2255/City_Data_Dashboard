@@ -1,14 +1,14 @@
-# 🏙️ Smart City Data Dashboard
+#  Smart City Data Dashboard
 
 A real-time data dashboard that displays weather conditions and air quality information for cities worldwide using open APIs.
 
-## 📋 Project Overview
+##  Project Overview
 
 This Smart City Dashboard fetches live data from public APIs and presents it in an interactive, user-friendly interface. Users can search for any city and view comprehensive environmental data including temperature, humidity, wind speed, air quality index, and more.
 
-## ✨ Features
+##  Features
 
-### 🌤️ Weather Information
+###  Weather Information
 - Real-time temperature and weather conditions
 - "Feels like" temperature
 - Humidity levels
@@ -17,7 +17,7 @@ This Smart City Dashboard fetches live data from public APIs and presents it in 
 - Visibility range
 - Sunrise and sunset times
 
-### 🌫️ Air Quality Monitoring
+### Air Quality Monitoring
 - Air Quality Index (AQI) with color-coded status
 - Detailed pollutant breakdown:
   - PM2.5 and PM10 (Particulate Matter)
@@ -27,19 +27,19 @@ This Smart City Dashboard fetches live data from public APIs and presents it in 
   - SO2 (Sulphur Dioxide)
   - NH3 (Ammonia)
 
-### 📊 Data Visualization
+###  Data Visualization
 - Interactive dashboard with multiple sections
 - Charts section (ready for Chart.js integration)
 - Map view with city coordinates
 - Raw data tables for detailed analysis
 - JSON viewer for API responses
 
-### 🗺️ Map Integration
+###  Map Integration
 - City location display
 - Coordinates and timezone information
 - Ready for TomTom interactive maps
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 ### Frontend
 - **HTML5** - Structure and semantic markup
@@ -57,7 +57,7 @@ This Smart City Dashboard fetches live data from public APIs and presents it in 
   - Air Pollution API
 - **Google Gemini API** - AI-powered city descriptions
 
-## 📁 File Structure
+## File Structure
 
 ```
 City_Data_Dashboard/
@@ -65,72 +65,15 @@ City_Data_Dashboard/
 ├── index.html          # Main HTML structure
 ├── style.css           # All styling and responsive design
 ├── script.js           # JavaScript logic and API integration
-├── config.example.js   # API configuration template (safe to commit)
+
 ├── config.js           # Your API keys (DO NOT COMMIT - in .gitignore)
 ├── build-config.js      # Netlify build script (generates config.js from env vars)
-├── netlify.toml        # Netlify deployment configuration
+
 ├── .gitignore          # Git ignore rules (protects config.js)
 ├── DEPLOYMENT.md       # Detailed deployment guide
 └── README.md          # Project documentation
 ```
 
-## 🚀 How to Run
-
-### Local Development:
-
-1. **Setup API keys:**
-   ```bash
-   cp config.example.js config.js
-   # Edit config.js and add your API keys
-   ```
-
-2. **Open the project:**
-   - Simply open `index.html` in any modern web browser
-   - Or use a local server: `python -m http.server 8000`
-
-3. **Search for a city:**
-   - Type any city name in the search bar (e.g., "London", "New York", "Tokyo")
-   - Click "Search" or press Enter
-   - Watch the dashboard populate with real-time data
-
-4. **Navigate sections:**
-   - Click on sidebar menu items to switch between:
-     - Dashboard (main overview)
-     - Charts (data visualization)
-     - Map View (location details)
-     - Raw Data (API responses)
-
-### Deploy to Netlify:
-
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
-
-**Quick steps:**
-1. Push to GitHub (config.js is already in .gitignore)
-2. Connect repo to Netlify
-3. Add environment variables in Netlify dashboard:
-   - `GOOGLE_MAPS_KEY`
-   - `OPENWEATHER_KEY`
-   - `GEMINI_KEY`
-4. Deploy! Netlify will auto-generate config.js during build
-
-## 🔑 API Setup
-
-### For Local Development:
-
-1. **Copy the example config:**
-   ```bash
-   cp config.example.js config.js
-   ```
-
-2. **Add your API keys to `config.js`:**
-   - Google Maps API key (for maps, geocoding, and air quality)
-   - OpenWeatherMap API key (fallback for weather)
-   - Gemini API key (for AI city descriptions)
-
-3. **Get API Keys:**
-   - [Google Cloud Console](https://console.cloud.google.com/) - Enable Maps JavaScript API, Geocoding API, and Air Quality API
-   - [OpenWeatherMap](https://openweathermap.org/api) - Free tier available
-   - [Google AI Studio](https://makersuite.google.com/app/apikey) - For Gemini API
 
 ### API Rate Limits:
 - Google Maps: Varies by API (check your quota)
